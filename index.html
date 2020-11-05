@@ -1,43 +1,89 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>Using CSS Grid</title>
-	<style>
-		body{
-			color: #fff;
-			font-family: 'Nunito Semibold';
-			text-align: center;
-			background: #3bbced;	
-		}
+  <head>
+    <title>Using CSS Grid</title>
+    <style>
+      body {
+        color: #fff;
+        font-family: "Nunito Semibold";
+        text-align: center;
+        background: #3bbced;
+      }
 
-		#content{
-			display: grid;
-			max-width: 960px;
-			margin: 0 auto;
-			grid-template-columns: repeat(6, 1fr);
-			grid-auto-rows: minmax(150px, auto);
-			grid-gap: 10px;
-}
+      #content {
+        display: grid;
+        max-width: 960px;
+        margin: 0 auto;
+        grid-template-columns: repeat(4, 1fr);
+        grid-auto-rows: minmax(100px, auto);
+		grid-gap: 10px;
+		padding: 50px;
+        grid-template-areas:
+          "header header header header"
+          "footer footer footer footer"
+          "main main main main"
+          "main main main main"
+          "aside aside nav nav"
+          "section section section section"
+          "section section section section";
+      }
 
-		#content div{
-			background: #333;
-			padding: 30px;
-		}
-		/* cheeky */
-	</style>
-</head>
-<body>
+      @media screen and (min-width: 760px) {
+        #content {
+          display: grid;
+          max-width: 960px;
+          margin: 0 auto;
+		  grid-gap: 10px;
+		  padding: 50px;
+          grid-template-columns: repeat(4, 1fr);
+          grid-auto-rows: minmax(100px, auto);
+          grid-template-areas:
+            "header header header header"
+            "aside aside main main"
+            "nav nav main main"
+            "section section section section"
+            "footer footer footer footer";
+        }
+      }
 
-	<div id="content">
+      #content > * {
+        background: #333;
+        padding: 30px;
+      }
 
-		<header>Header</header>
-		<main>Main</main>
-		<section>Section</section>
-		<aside>Aside</aside>
-		<nav>Nav</nav>
-		<footer>Footer</footer>
+      header {
+        grid-area: header;
+      }
 
-	</div>
+      main {
+        grid-area: main;
+      }
 
-</body>
+      section {
+        grid-area: section;
+      }
+
+      aside {
+        grid-area: aside;
+      }
+
+      nav {
+        grid-area: nav;
+      }
+
+      footer {
+        grid-area: footer;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="content">
+      <header>Header</header>
+      <main>Main</main>
+      <section>Section</section>
+      <aside>Aside</aside>
+      <nav>Nav</nav>
+      <footer>Footer</footer>
+    </div>
+  </body>
 </html>
